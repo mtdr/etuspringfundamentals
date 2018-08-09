@@ -1,10 +1,14 @@
 package etu.spb.spring.demo;// import etu.spb.spring.demo.Person
 
+import lombok.AccessLevel;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
+import lombok.experimental.FieldDefaults;
 import lombok.val;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,9 +16,16 @@ import java.io.InputStreamReader;
 import java.io.LineNumberReader;
 import java.util.Arrays;
 
+import static lombok.AccessLevel.PRIVATE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@FieldDefaults(level = PRIVATE, makeFinal = true)
 class PersonTest {
+
+    String config = "application-context.xml";
+
+    BeanFactory beanFactory = new ClassPathXmlApplicationContext(config);
+
     @Test
     @SneakyThrows
     @DisplayName("\"SetAge\" method works correctly")
@@ -65,4 +76,10 @@ class PersonTest {
             throw new IOException("khsgdf");
     }
 
+    @Test
+    @SneakyThrows
+    void testIoC() {
+        Person person = beanFactory.getBean("person", Person.class);
+        assertEquals(person.getAge(), 22);
+    }
 }

@@ -16,6 +16,7 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE)
 @Builder //@AllArgsConstructor(access = PACKAGE)
 @Slf4j
+@AllArgsConstructor
 public class Person {
 
 //    @Getter(onMethod = @__(@Override))
