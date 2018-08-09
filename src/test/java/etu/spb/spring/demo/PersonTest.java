@@ -1,12 +1,15 @@
 package etu.spb.spring.demo;// import etu.spb.spring.demo.Person
 
+import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.val;
-import lombok.var;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,6 +46,11 @@ class PersonTest {
         // when
         person.setAge(55);
 
+        @Cleanup InputStream resourceAsStream = Person.class.getResourceAsStream("/1.txt");
+        @Cleanup InputStreamReader inputStreamReader = new InputStreamReader(resourceAsStream);
+        @Cleanup LineNumberReader lineNumberReader = new LineNumberReader(inputStreamReader);
+        String s = lineNumberReader.readLine();
+
         // then
         assertEquals(person.getAge(), 55);
         assertEquals(person.getLastName(), "Петров");
@@ -51,6 +59,7 @@ class PersonTest {
         assertEquals(person2.getLastName(), "Петичкин");
         assertEquals(person3.getFirstName(), "Маша");
         assertEquals(person3.getLastName(), "Петичкин");
+        assertEquals(s, "Mother washed RAMA!");
 
         if (false)
             throw new IOException("khsgdf");

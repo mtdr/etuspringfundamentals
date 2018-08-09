@@ -1,13 +1,12 @@
 package etu.spb.spring.demo;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Singular;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.Wither;
 import lombok.extern.slf4j.Slf4j;
 
+import java.io.InputStream;
+import java.io.LineNumberReader;
 import java.util.List;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -31,7 +30,9 @@ public class Person {
     @Singular
     List<String> telephones;
 
+    @SneakyThrows
     public static void main(String... __) {
         log.error("khgsdf");
+
     }
 }
