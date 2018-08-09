@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 import lombok.experimental.FieldDefaults;
+import lombok.experimental.Wither;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
@@ -20,6 +21,8 @@ public class Person {
 
 //    @Getter(onMethod = @__(@Override))
     int age;
+
+    @Wither
     String firstName;
 
     @Builder.Default

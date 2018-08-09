@@ -38,16 +38,21 @@ class PersonTest {
                 .telephones(Arrays.asList("222-33-22", "333-22-33"))
                 .build();
 
+        Person person3 = person2.withFirstName("Маша");
+
         // when
         person.setAge(55);
 
         // then
         assertEquals(person.getAge(), 55);
         assertEquals(person.getLastName(), "Петров");
-        assertEquals(person2.getFirstName(), "Вася");
         assertEquals(person1.getLastName(), "Васичкин");
+        assertEquals(person2.getFirstName(), "Вася");
+        assertEquals(person2.getLastName(), "Петичкин");
+        assertEquals(person3.getFirstName(), "Маша");
+        assertEquals(person3.getLastName(), "Петичкин");
 
-        if (true)
+        if (false)
             throw new IOException("khsgdf");
     }
 
