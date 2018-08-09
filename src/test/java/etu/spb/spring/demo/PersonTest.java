@@ -1,5 +1,7 @@
 package etu.spb.spring.demo;// import etu.spb.spring.demo.Person
 
+import lombok.val;
+import lombok.var;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +15,7 @@ class PersonTest {
     void testSetAge() {
         // given
 //        Person person = new Person(55, "Федя", "Васичкин");
-        Person person = Person.builder()
+        val person = Person.builder()
                 .age(55)
                 .firstName("Федя")
 //                .telephones(Arrays.asList("222-33-22", "333-22-33"))
@@ -22,7 +24,7 @@ class PersonTest {
                 .telephone("222-35-22")
                 .build();
 
-        Person person2 = new Person(21, "Вася", "Петичкин",
+        val person2 = new Person(21, "Вася", "Петичкин",
                 Arrays.asList("222-33-22", "333-22-33"));
 
         Person person1 = Person.builder()
