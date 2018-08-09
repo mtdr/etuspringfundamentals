@@ -1,18 +1,22 @@
 package etu.spb.spring.demo;// import etu.spb.spring.demo.Person
 
+import lombok.SneakyThrows;
 import lombok.val;
 import lombok.var;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PersonTest {
     @Test
+    @SneakyThrows
     @DisplayName("\"SetAge\" method works correctly")
     void testSetAge() {
+
         // given
 //        Person person = new Person(55, "Федя", "Васичкин");
         val person = Person.builder()
@@ -42,6 +46,9 @@ class PersonTest {
         assertEquals(person.getLastName(), "Петров");
         assertEquals(person2.getFirstName(), "Вася");
         assertEquals(person1.getLastName(), "Васичкин");
+
+        if (true)
+            throw new IOException("khsgdf");
     }
 
 }
