@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Singular;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import static lombok.AccessLevel.PRIVATE;
 //@Value //@Getter {final class} @AllArgsConstructor @FieldDefaults(level = PRIVATE, makeFinal = true) //@ToString //@EqualsAndHashCode
 @FieldDefaults(level = PRIVATE)
 @Builder //@AllArgsConstructor(access = PACKAGE)
+@Slf4j
 public class Person {
 
 //    @Getter(onMethod = @__(@Override))
@@ -27,9 +29,6 @@ public class Person {
     List<String> telephones;
 
     public static void main(String... __) {
-        int x = 5;
-        int y;
-        int z;
-        y = x + 8;
+        log.error("khgsdf");
     }
 }
