@@ -10,9 +10,8 @@ class PersonTest {
     @DisplayName("\"SetAge\" method works correctly")
     void testSetAge() {
         // given
-        Person person = new Person("Федя");
-        Person person2 = new Person(21,
-                "Вася", "Петичкин");
+        Person person = new Person(55, "Федя", "Васичкин");
+        Person person2 = new Person(21, "Вася", "Петичкин");
 
         // when
 //        person.setAge(55);
