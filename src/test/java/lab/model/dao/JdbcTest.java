@@ -1,31 +1,31 @@
 package lab.model.dao;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import lab.dao.CountryDao;
 import lab.model.Country;
-
-import org.junit.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:application-context.xml")
-public class JdbcTest{
+public class JdbcTest {
 
-	@Autowired
+    @Autowired
     CountryDao countryDao;
 
-	List<Country> expectedCountryList = new ArrayList<Country>();
-	List<Country> expectedCountryListStartsWithA = new ArrayList<Country>();
-	Country countryWithChangedName = new Country(1, "Russia", "RU");
+    List<Country> expectedCountryList = new ArrayList<Country>();
+    List<Country> expectedCountryListStartsWithA = new ArrayList<Country>();
+    Country countryWithChangedName = new Country(1, "Russia", "RU");
 
     @Before
     public void setUp() throws Exception {
@@ -33,7 +33,7 @@ public class JdbcTest{
         countryDao.loadCountries();
     }
 
-    
+
     @Test
     @DirtiesContext
     public void testCountryList() {
@@ -64,13 +64,13 @@ public class JdbcTest{
     }
 
     private void initExpectedCountryLists() {
-         for (int i = 0; i < CountryDao.COUNTRY_INIT_DATA.length; i++) {
-             String[] countryInitData = CountryDao.COUNTRY_INIT_DATA[i];
-             Country country = new Country(i, countryInitData[0], countryInitData[1]);
-             expectedCountryList.add(country);
-             if (country.getName().startsWith("A")) {
-                 expectedCountryListStartsWithA.add(country);
-             }
-         }
-     }
+        for (int i = 0; i < CountryDao.COUNTRY_INIT_DATA.length; i++) {
+            String[] countryInitData = CountryDao.COUNTRY_INIT_DATA[i];
+            Country country = new Country(i + 1, countryInitData[0], countryInitData[1]);
+            expectedCountryList.add(country);
+            if (country.getName().startsWith("A")) {
+                expectedCountryListStartsWithA.add(country);
+            }
+        }
+    }
 }
