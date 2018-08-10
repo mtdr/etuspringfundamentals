@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 class PersonTest {
 
-    String config = "application-context.xml";
+    String config = "ioc.xml";
 
     BeanFactory beanFactory = new ClassPathXmlApplicationContext(config);
 

@@ -1,5 +1,8 @@
-package lab.model;
+package lab.model.ioc;
 
+import lab.model.Country;
+import lab.model.UsualPerson;
+import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,12 +11,12 @@ import static org.junit.Assert.assertEquals;
 
 public class SimpleAppTest {
 
-    static final String CONFIG = "application-context.xml";
+    static final String CONFIG = "ioc.xml";
     BeanFactory context = new ClassPathXmlApplicationContext(CONFIG);
 
     @Test
     public void testInitPerson() {
-        assertEquals(getExpectedPerson(), context.getBean("person"));
+        Assert.assertEquals(getExpectedPerson(), context.getBean("person"));
     }
 
     public static UsualPerson getExpectedPerson() {
