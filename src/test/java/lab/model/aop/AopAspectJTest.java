@@ -4,6 +4,9 @@ import lab.common.TestUtils;
 import lab.model.ApuBar;
 import lab.model.Bar;
 import lab.model.Customer;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
+import lombok.experimental.NonFinal;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +30,7 @@ public class AopAspectJTest {
     Customer customer;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         s = TestUtils.fromSystemOutPrintln(() -> bar.sellSquishee(customer));
     }
 

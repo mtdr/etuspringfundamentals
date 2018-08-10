@@ -1,5 +1,8 @@
 package lab.model;
 
+import org.springframework.stereotype.Component;
+
+@Component("bar")
 public class ApuBar implements Bar {
 
     public Squishee sellSquishee(Customer customer) {

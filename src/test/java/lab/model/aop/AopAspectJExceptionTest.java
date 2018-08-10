@@ -4,6 +4,7 @@ import lab.common.TestUtils;
 import lab.model.Bar;
 import lab.model.Customer;
 import lab.model.CustomerBrokenException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +26,8 @@ public class AopAspectJExceptionTest {
     private Customer customer;
 
     @Before
-    public void setUp() throws Exception {
-        
-//        customer.setBroke(true);
+    public void setUp() {
+        customer.setBroke(true);
     }
 
     @Test(expected=CustomerBrokenException.class)
@@ -36,5 +36,10 @@ public class AopAspectJExceptionTest {
         String s = TestUtils.fromSystemOutPrintln(() -> bar.sellSquishee(customer));
 
         assertTrue("Customer is not broken ", s.contains("Hmmm..."));
+    }
+
+    @After
+    public void tearDown() {
+        customer.setBroke(false);
     }
 }
