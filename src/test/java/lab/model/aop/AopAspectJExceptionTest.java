@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:aop.xml")
 public class AopAspectJExceptionTest {
 
 	@Autowired

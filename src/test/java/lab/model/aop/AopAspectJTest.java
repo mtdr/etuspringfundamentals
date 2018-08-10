@@ -4,9 +4,6 @@ import lab.common.TestUtils;
 import lab.model.ApuBar;
 import lab.model.Bar;
 import lab.model.Customer;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.FieldDefaults;
-import lombok.experimental.NonFinal;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +15,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:aop.xml")
 public class AopAspectJTest {
 
     String s;
