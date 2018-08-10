@@ -1,59 +1,32 @@
 package lab.model;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 public class SimpleAppTest {
-	
-	protected static final String APPLICATION_CONTEXT_XML_FILE_NAME = "classpath:application-context.xml";
 
-	private AbstractApplicationContext context;
+    static final String CONFIG = "application-context.xml";
+    BeanFactory context = new ClassPathXmlApplicationContext(CONFIG);
 
-	private UsualPerson expectedPerson;
+    @Test
+    public void testInitPerson() {
+        assertEquals(getExpectedPerson(), context.getBean("person"));
+    }
 
-	@Before
-	public void setUp() throws Exception {
-		context = new ClassPathXmlApplicationContext(
-				APPLICATION_CONTEXT_XML_FILE_NAME);
-		expectedPerson = getExpectedPerson();
-	}
-
-	@Test
-	public void testInitPerson() {
-		UsualPerson person = (UsualPerson) context.getBean("person");
-//		FYI: Another way to achieve the bean
-//		person = context.getBean(UsualPerson.class);
-		assertEquals(expectedPerson, person);
-		System.out.println(person);
-	}
-
-	private UsualPerson getExpectedPerson() {
-		UsualPerson person = new UsualPerson();
-		person.setAge(35);
-		person.setHeight(1.78F);
-		person.setProgrammer(true);
-		person.setName("John Smith");
-
-		Country country = new Country();
-		country.setId(1);
-		country.setName("Russia");
-		country.setCodeName("RU");
-
-		person.setCountry(country);
-
-		List<String> contacts = new ArrayList<String>();
-		contacts.add("asd@asd.ru");
-		contacts.add("+7-234-456-67-89");
-
-		person.setContacts(contacts);
-
-		return person;
-	}
+    public static UsualPerson getExpectedPerson() {
+        return UsualPerson.builder()
+                .age(35)
+                .height(1.78F)
+                .isProgrammer(true)
+                .name("John Smith")
+                .country(Country.builder()
+                        .name("Russia")
+                        .codeName("RU").build())
+                .contact("asd@asd.ru")
+                .contact("+7-234-456-67-89")
+                .build();
+    }
 }

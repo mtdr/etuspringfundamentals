@@ -1,21 +1,20 @@
 package lab.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.Data;
 import lombok.Singular;
-import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
-import static lombok.AccessLevel.PRIVATE;
-
 @Data
 @Builder
-@FieldDefaults(level = PRIVATE)
+@AllArgsConstructor
 public class UsualPerson implements Person {
 
-    int id;
+    @Default
+    int id = 1;
 
     String name;
 
