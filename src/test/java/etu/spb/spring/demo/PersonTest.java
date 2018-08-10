@@ -1,6 +1,5 @@
 package etu.spb.spring.demo;// import etu.spb.spring.demo.Person
 
-import lombok.AccessLevel;
 import lombok.Cleanup;
 import lombok.SneakyThrows;
 import lombok.experimental.FieldDefaults;
